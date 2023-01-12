@@ -3,6 +3,7 @@ import handlebars from 'vite-plugin-handlebars';
 
 export default {
   root: 'src',
+  base: '/js-game-rendering-benchmark/',
   build: {
     outDir: '../dist',
     emptyOutDir: true,
