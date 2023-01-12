@@ -1,5 +1,14 @@
+import fs from 'fs';
 import { resolve } from 'path';
 import handlebars from 'vite-plugin-handlebars';
+
+const input = {};
+fs.readdirSync('src').forEach((file) => {
+  if (file.endsWith('.html')) {
+    if (file === 'index.html') return;
+    input[file.split('.')[0]] = resolve('src', file);
+  }
+});
 
 export default {
   root: 'src',
@@ -13,10 +22,7 @@ export default {
     rollupOptions: {
       input: {
         main: resolve('src', 'index.html'),
-        canvas: resolve('src', 'canvas.html'),
-        dom: resolve('src', 'dom.html'),
-        pixi: resolve('src', 'pixi.html'),
-        three: resolve('src', 'three.html'),
+        ...input,
       },
     },
   },
