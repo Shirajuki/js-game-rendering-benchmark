@@ -140,6 +140,11 @@ esbuild@^0.16.3:
     "@esbuild/win32-ia32" "0.16.17"
     "@esbuild/win32-x64" "0.16.17"
 
+fpsmeter@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/fpsmeter/-/fpsmeter-0.3.1.tgz#f134d41a1af06a717b35523ee698552d7f0f3ce5"
+  integrity sha512-i3zzNJwGkA+9WWIXpAtP0TCN64eO5VkKQgirYE7ZCVqyC3NfUPszU35R044fmSCjiMqefiBs5NiGKvD7lFJ87Q==
+
 fsevents@~2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
