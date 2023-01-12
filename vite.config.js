@@ -1,5 +1,5 @@
-import { resolve } from 'path'
-import handlebars from 'vite-plugin-handlebars'
+import { resolve } from 'path';
+import handlebars from 'vite-plugin-handlebars';
 
 export default {
   root: 'src',
@@ -11,6 +11,8 @@ export default {
         main: resolve('src', 'index.html'),
         canvas: resolve('src', 'canvas.html'),
         dom: resolve('src', 'dom.html'),
+        pixi: resolve('src', 'pixi.html'),
+        three: resolve('src', 'three.html'),
       },
     },
   },
@@ -19,4 +21,4 @@ export default {
       partialDirectory: resolve('src', 'partials'),
     }),
   ],
-}
+};
