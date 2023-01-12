@@ -1,6 +1,6 @@
 # Javascript rendering/game engines comparison
 
-This is a particle-based performance test comparing a set of currently maintained Javascript-based rendering/game engines.
+This is a particle-based performance test that compares a set of Javascript-based rendering/game engines that are currently maintained.
 
 ## Description
 
@@ -47,3 +47,10 @@ TBA
 TBA
 
 It should be noted that being faster is not always preferable. Aside from performance, one must consider the features a library provides such as asset loading, sprite animation, input, etc. to easily create various games. In addition to this, some rendering/game engines may have a steeper learning curve than others, making them less desirable to use. It is important to consider user experience as well as speed in development and implementation.
+
+## Readings
+
+- [A collection of WebGL and WebGPU frameworks and libraries](https://gist.github.com/dmnsgn/76878ba6903cf15789b712464875cfdc)
+- [A collection of primarily HTML5 based game engines and frameworks](https://github.com/bebraw/jswiki/wiki/Game-Engines)
+- [quidmonkey's Benchmark comparison of pixijs and impactjs](https://github.com/quidmonkey/particle_test)
+- [slaylines' benchmark comparison of some popular canvas engines](https://github.com/slaylines/canvas-engines-comparison)
