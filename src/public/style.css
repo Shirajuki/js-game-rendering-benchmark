@@ -46,7 +46,7 @@ main {
 	padding: 0 2rem;
 	max-width: 100vw;
 	overflow-x: hidden;
-	min-height: calc(100vh - 100px - 120px);
+	min-height: calc(100vh - 100px - 90px);
 }
 footer {
 	display: flex;
