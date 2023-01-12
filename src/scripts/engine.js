@@ -14,6 +14,7 @@ class Engine {
 	}
 
 	initFpsmeter() {
+		this.fpsContainer.innerHTML = "";
 		this.fpsmeter = new window.FPSMeter(this.fpsContainer, {
 			top: 0,
 			left: 0,
