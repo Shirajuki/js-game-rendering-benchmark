@@ -1,16 +1,16 @@
+import "fpsmeter";
 class Engine {
 	constructor() {
-		this.canvas = document.querySelector("canvas");
+		this.canvas = document.querySelector("#canvas");
 		this.fpsContainer = document.querySelector(".fps-container");
 		this.countLinks = document.querySelectorAll(".count-container a");
-
-		this.width = Math.min(this.canvas.clientWidth, 1000);
-		this.height = this.canvas.clientHeight * 0.75;
+		canvas.width = 1024;
+		canvas.height = 512;
+		this.width = this.canvas.width;
+		this.height = this.canvas.height;
 		this.count = 0;
 
-		this.initFpsmeter();
-		this.initCountLink();
-		this.initNavLink();
+		this.init();
 	}
 
 	initFpsmeter() {
@@ -56,9 +56,11 @@ class Engine {
 				const count = parseInt(link.innerText);
 				if (!count) {
 					console.log(""); // TODO
+					toggleLinks(count);
 				} else {
 					window.history.replaceState({}, pathname, `?count=${count}`);
 					toggleLinks(count);
+					this.init();
 					this.render();
 				}
 			});
@@ -72,6 +74,12 @@ class Engine {
 		[...navLinks].forEach((ml) => {
 			if (ml.pathname === pathname) ml.classList.add("active");
 		});
+	}
+
+	init() {
+		this.initFpsmeter();
+		this.initCountLink();
+		this.initNavLink();
 	}
 
 	render() {}
