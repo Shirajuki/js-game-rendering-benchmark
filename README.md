@@ -4,8 +4,8 @@ This is a particle-based performance test that compares a set of Javascript-base
 
 ## Description
 
-- Up to 1.000.000 different particles moving on a canvas with various speed
-  - A slider option is also available for comparing particle counts between libraries more freely. Be aware that drawing a large number of particles on specific libraries may cause the test to freeze.
+- Up to 10.000 different particles moving on a canvas with various speed
+  - A custom option through the count query is also available for comparing particle counts between libraries more freely. Be aware that drawing a large number of particles on specific libraries may cause the test to freeze.
 - Different libraries used to render the scene are chosen only if they have been maintained in the previous month of this benchmark. The following libraries compared are:
 
 | Name                                                          | Stars                                                                                | Last Commit                                                                                 | Description                                                                                                 |
