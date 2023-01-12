@@ -35,12 +35,16 @@ body {
   font-size: 18px;
 }
 header {
-  display: flex;
+  /* display: flex; */
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 2rem;
   height: 100px;
   font-size: 26px;
+}
+nav {
+  display: flex;
+  gap: 1rem;
 }
 main {
   padding: 0 2rem;
