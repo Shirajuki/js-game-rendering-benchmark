@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/style.css" />
-		<title>Index — JS Game Rendering Benchmark</title>
-		<meta http-equiv="refresh" content="0; url=/canvas.html" />
-	</head>
-	<body>
-		<p><a href="/canvas.html">Redirect</a></p>
-	</body>
+  {{#> head index=1 }} Canvas — JS Game Rendering Benchmark {{/head}}
+  <body>
+    {{> header }}
+    <main>
+      {{> container }}
+      <canvas id="canvas" class="canvas"></canvas>
+    </main>
+    {{> footer }}
+    <script type="module" src="/scripts/canvas.js"></script>
+  </body>
 </html>

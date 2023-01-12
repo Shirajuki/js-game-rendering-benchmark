@@ -1,44 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/style.css" />
-		<title>Canvas — JS Game Rendering Benchmark</title>
-	</head>
-	<body>
-		<header>
-			<nav>
-				<a href="/canvas.html">Canvas</a>
-				<a href="/dom.html">DOM</a>
-			</nav>
-		</header>
-		<main>
-			<div class="container">
-				<div class="count-container">
-					Count:
-					<a href="?count=500">500</a>
-					<a href="?count=1000">1000</a>
-					<a href="?count=2500">2500</a>
-					<a href="?count=5000">5000</a>
-					<a href="?count=10000">10000</a>
-					<a href="?count=custom">CUSTOM</a>
-				</div>
-				<div class="fps-container"></div>
-			</div>
-			<canvas id="canvas" class="canvas"></canvas>
-		</main>
-		<footer>
-			<div class="name-container">
-				<a class="name" href="https://shirajuki.js.org">Shirajuki</a
-				><span>© 2023</span>
-			</div>
-			<div>
-				Design inspired by
-				<a href="https://benchmarks.slaylines.io">benchmarks.slaylines.io</a>
-			</div>
-		</footer>
-		<script type="module" src="/scripts/canvas.js"></script>
-	</body>
+  {{#> head }} Canvas — JS Game Rendering Benchmark {{/head}}
+  <body>
+    {{> header }}
+    <main>
+      {{> container }}
+      <canvas id="canvas" class="canvas"></canvas>
+    </main>
+    {{> footer }}
+    <script type="module" src="/scripts/canvas.js"></script>
+  </body>
 </html>
