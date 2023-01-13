@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=development vite",
     "build": "vite build",
+    "deploy": "bash deploy.sh",
     "preview": "vite preview"
   },
   "devDependencies": {
