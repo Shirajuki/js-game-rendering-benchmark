@@ -18,11 +18,14 @@ jobs:
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
 
-      - name: Deploy to web
+      - name: Build
         run: |
-          git config --global user.email "shirajuki@duck.com"
-          git config --global user.name "Jonny Ngo Luong"
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run deploy
+          yarn build
+          echo > ./dist/.nojekyll
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
