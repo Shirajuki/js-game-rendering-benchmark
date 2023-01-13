@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 16
           cache: 'yarn'
-      - run: npm ci
+      - run: yarn install --frozen-lockfile
 
       - name: Deploy to web
         run: |
