@@ -41,7 +41,7 @@ class PixiEngine extends Engine {
       ];
       const particle = new PIXI.Graphics();
       particle.lineStyle(1, 0xffffff, 1);
-      particle.drawCircle(-size / 2, -size / 2, size * 2, 0, Math.PI);
+      particle.drawCircle(-size / 2, -size / 2, size, 0, Math.PI);
       particle.position.set(x, y);
       this.app.stage.addChild(particle);
       particles[i] = { x, y, size: size, dx, dy, el: particle };
