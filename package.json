@@ -13,6 +13,7 @@
     "vite-plugin-handlebars": "^1.6.0"
   },
   "dependencies": {
+    "babylonjs": "^5.42.0",
     "fpsmeter": "^0.3.1",
     "phaser": "^3.55.2",
     "pixi.js": "^7.1.0",

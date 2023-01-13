@@ -332,6 +332,11 @@
   resolved "https://registry.yarnpkg.com/@types/offscreencanvas/-/offscreencanvas-2019.7.0.tgz#e4a932069db47bb3eabeb0b305502d01586fa90d"
   integrity sha512-PGcyveRIpL1XIqK8eBsmRBt76eFgtzuPiSTyKHZxnGemp2yzGzWpjYKAfK3wIMiU7eH+851yEpiuP8JZerTmWg==
 
+babylonjs@^5.42.0:
+  version "5.42.0"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.42.0.tgz#5537e4d7a8181d7c1e9aaab2f6f7080a12d52848"
+  integrity sha512-Ri/nJbS99NVmg2qTa7+EcL3QV2wzUxiavNmX6iqc3VJSmT5dPH4db9nqPQfN49UEV+ER1zuaJwrJ2bWlP1K+UA==
+
 earcut@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/earcut/-/earcut-2.2.4.tgz#6d02fd4d68160c114825d06890a92ecaae60343a"
