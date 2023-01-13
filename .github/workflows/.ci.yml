@@ -17,7 +17,8 @@ jobs:
           node-version: 16
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-
+      - run: git config --global user.email "shirajuki@duck.com"
+      - run: git config --global user.name "Jonny Ngo Luong"
       - name: Deploy to web
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
