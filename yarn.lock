@@ -624,11 +624,6 @@ pixi.js@^7.1.0:
     "@pixi/text" "7.1.0"
     "@pixi/text-bitmap" "7.1.0"
 
-playcanvas@^1.60.0:
-  version "1.60.0"
-  resolved "https://registry.yarnpkg.com/playcanvas/-/playcanvas-1.60.0.tgz#79523836e440a395026f6f2f3f8c55c3119faff5"
-  integrity sha512-Y/DPD9DvyhJ3owHjnluPrq7wVO1OmrF5KauDt+cIWq6fOTtYxqTmEB0TiQRLHoIX66A/F36WVql1JlL7nZgMYQ==
-
 postcss@^8.4.13, postcss@^8.4.20:
   version "8.4.21"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.21.tgz#c639b719a57efc3187b13a1d765675485f4134f4"
@@ -695,6 +690,11 @@ three@^0.148.0:
   version "0.148.0"
   resolved "https://registry.yarnpkg.com/three/-/three-0.148.0.tgz#b6f62f9c84227f8d51c151bf17b67984ded8e4d7"
   integrity sha512-8uzVV+qhTPi0bOFs/3te3RW6hb3urL8jYEl6irjCWo/l6sr8MPNMcClFev/MMYeIxr0gmDcoXTy/8LXh/LXkfw==
+
+two.js@^0.8.10:
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/two.js/-/two.js-0.8.10.tgz#d01f8bb1c9401f850730a79abb9784b900ccde0b"
+  integrity sha512-Rg0jn1n/0MWdDBrW47L245GWlWpbWlJ3Cv8xFlP05pSFqUT0Wn6w4yaOcxUCzAJQGRGdtmXOW3UI2W0LEEUD9Q==
 
 uglify-js@^3.1.4:
   version "3.17.4"
