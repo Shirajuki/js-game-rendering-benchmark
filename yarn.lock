@@ -317,6 +317,11 @@
     eventemitter3 "^4.0.0"
     url "^0.11.0"
 
+"@teppeis/multimaps@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@teppeis/multimaps/-/multimaps-2.0.0.tgz#2114ee964b702f9777d0e07899087ad9cd89a0de"
+  integrity sha512-TL1adzq1HdxUf9WYduLcQ/DNGYiz71U31QRgbnr0Ef1cPyOUOsBojxHVWpFeOSUucB6Lrs0LxFRA14ntgtkc9w==
+
 "@types/css-font-loading-module@^0.0.7":
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@types/css-font-loading-module/-/css-font-loading-module-0.0.7.tgz#2f98ede46acc0975de85c0b7b0ebe06041d24601"
@@ -337,7 +342,12 @@ babylonjs@^5.42.0:
   resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.42.0.tgz#5537e4d7a8181d7c1e9aaab2f6f7080a12d52848"
   integrity sha512-Ri/nJbS99NVmg2qTa7+EcL3QV2wzUxiavNmX6iqc3VJSmT5dPH4db9nqPQfN49UEV+ER1zuaJwrJ2bWlP1K+UA==
 
-earcut@^2.2.4:
+core-js@^3.27.1:
+  version "3.27.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.27.1.tgz#23cc909b315a6bb4e418bf40a52758af2103ba46"
+  integrity sha512-GutwJLBChfGCpwwhbYoqfv03LAfmiz7e7D/BNxzeMxwQf10GRSzqiOjx7AmtEk+heiD/JWmBuyBPgFtx0Sg1ww==
+
+earcut@2.2.4, earcut@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/earcut/-/earcut-2.2.4.tgz#6d02fd4d68160c114825d06890a92ecaae60343a"
   integrity sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==
@@ -502,6 +512,11 @@ eventemitter3@^4.0.0, eventemitter3@^4.0.7:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
 
+eventemitter3@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-5.0.0.tgz#084eb7f5b5388df1451e63f4c2aafd71b217ccb3"
+  integrity sha512-riuVbElZZNXLeLEoprfNYoDSwTBRR44X3mnhdI1YcnENpWTCsTTVZ2zFuqQcpoyqPQIUXdiPEU0ECAq0KQRaHg==
+
 fpsmeter@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/fpsmeter/-/fpsmeter-0.3.1.tgz#f134d41a1af06a717b35523ee698552d7f0f3ce5"
@@ -536,6 +551,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+howler@2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/howler/-/howler-2.2.3.tgz#a2eff9b08b586798e7a2ee17a602a90df28715da"
+  integrity sha512-QM0FFkw0LRX1PR8pNzJVAY25JhIWvbKMBFM4gqk+QdV+kPXOhleWGCB6AiAF/goGjIHK2e/nIElplvjQwhr0jg==
+
 inherits@2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
@@ -547,6 +567,17 @@ is-core-module@^2.9.0:
   integrity sha512-RRjxlvLDkD1YJwDbroBHMb+cukurkDWNyHx7D3oNB5x9rb5ogcksMC5wHCadcXoo67gVr/+3GFySh3134zi6rw==
   dependencies:
     has "^1.0.3"
+
+melonjs@^14.4.0:
+  version "14.4.0"
+  resolved "https://registry.yarnpkg.com/melonjs/-/melonjs-14.4.0.tgz#c44cecc77149367f2653463c2a7d42be0d4c7db5"
+  integrity sha512-dCo6qR43C4/w+2VlZo6YFQZPCKJX7dAu6B1bnsd3aiep0RR4ydKk6TKQ5rfo9I8XzENte0YPayTtc14YNnBm+g==
+  dependencies:
+    "@teppeis/multimaps" "^2.0.0"
+    core-js "^3.27.1"
+    earcut "2.2.4"
+    eventemitter3 "^5.0.0"
+    howler "2.2.3"
 
 minimist@^1.2.5:
   version "1.2.7"

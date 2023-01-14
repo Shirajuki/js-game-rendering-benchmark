@@ -1,7 +1,7 @@
 import Two from 'two.js';
 import Engine from './engine.js';
 
-class CanvasEngine extends Engine {
+class TwoEngine extends Engine {
   constructor() {
     super();
   }
@@ -63,6 +63,6 @@ class CanvasEngine extends Engine {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const engine = new CanvasEngine();
+  const engine = new TwoEngine();
   engine.render();
 });

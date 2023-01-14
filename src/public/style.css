@@ -105,6 +105,7 @@ a.active {
   border: 1px solid white;
   border-radius: 50%;
 }
+canvas,
 .canvas {
   display: inline-block;
   position: relative;
