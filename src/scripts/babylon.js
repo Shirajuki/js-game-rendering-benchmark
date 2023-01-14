@@ -13,6 +13,7 @@ class BabylonEngine extends Engine {
     window.cancelAnimationFrame(this.request);
 
     // Load the 3D engine
+    if (this.engine) this.engine.stopRenderLoop();
     this.engine = new BABYLON.Engine(this.canvas, true, {
       preserveDrawingBuffer: true,
       stencil: true,
