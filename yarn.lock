@@ -551,6 +551,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+hilojs@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/hilojs/-/hilojs-2.0.2.tgz#f02e7063ee4c54613d3617194c55c9cb39078470"
+  integrity sha512-PgRuYHTnXMeT4cP/rnhWqFX3xVY0BJ6+mwqIQI19MzSJ2eqLNlt0JpF2EjRJNGhtaLFH3QsXLkYnRjb7W+HGuA==
+
 howler@2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/howler/-/howler-2.2.3.tgz#a2eff9b08b586798e7a2ee17a602a90df28715da"

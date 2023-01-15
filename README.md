@@ -25,11 +25,7 @@ This is a particle-based performance test that compares a set of Javascript-base
 | [Ct.js](https://github.com/ct-js/docs.ctjs.rocks)             | ![GitHub Repo stars](https://img.shields.io/github/stars/ct-js/docs.ctjs.rocks)      | ![GitHub last commit](https://img.shields.io/github/last-commit/ct-js/docs.ctjs.rocks)      | Ct.js is a full-blown 2D game engine that allows you to easily create games based on the PIXI.js framework. | yes         |
 | [Zogra](https://github.com/SardineFish/zogra-renderer)        | ![GitHub Repo stars](https://img.shields.io/github/stars/SardineFish/zogra-renderer) | ![GitHub last commit](https://img.shields.io/github/last-commit/SardineFish/zogra-renderer) | A simple WebGL2 renderer.                                                                                   | no          |
 
-## DOM and Canvas
-
-TBA
-
-## WebGL
+## Canvas and WebGL
 
 TBA
 
@@ -45,7 +41,7 @@ TBA
 
 TBA
 
-It should be noted that being faster is not always preferable. Aside from performance, one must consider the features a library provides such as asset loading, sprite animation, input, etc. to easily create various games. In addition to this, some rendering/game engines may have a steeper learning curve than others, making them less desirable to use. It is important to consider user experience as well as speed in development and implementation.
+It should be noted that being faster is not always preferable. Aside from performance, one must consider the features a library provides such as asset loading, sprite animation, input, etc. to easily create various games. In addition to this, some rendering/game engines may have a steeper learning curve than others, making them less desirable to use. It is important to consider user experience as well as speed in game development.
 
 ## Readings
 

@@ -72,9 +72,6 @@ class MelonEngine extends Engine {
   }
   render() {
     me.game.world.addChild(new Graphics(this));
-    // me.event.off(me.event.GAME_UPDATE);
-    // me.event.on(me.event.GAME_UPDATE, () => {
-    // });
   }
 }
 

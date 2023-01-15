@@ -16,6 +16,7 @@
   "dependencies": {
     "babylonjs": "^5.42.0",
     "fpsmeter": "^0.3.1",
+    "hilojs": "^2.0.2",
     "kaboom": "^2000.2.10",
     "kontra": "^8.0.0",
     "melonjs": "^14.4.0",
