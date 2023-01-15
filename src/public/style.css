@@ -21,7 +21,7 @@ a {
   color: #9c64ff;
   text-decoration: none;
   border-bottom: 1px solid #9c64ff;
-  transition: color 0.2s;
+  transition: color 0.2s, filter 0.2s, border-color 0.2s;
 }
 a:hover {
   color: #934ddd;
@@ -77,20 +77,20 @@ main > div {
   width: 1024px;
 }
 .container {
+  position: relative;
   margin-top: 0.2rem;
   margin-bottom: 0.8rem;
 }
 .fps-container {
   position: relative;
-  transform: translateY(13px);
+  transform: translate(4px, 13px);
 }
 .fps-container > div {
   height: 40px !important;
   border-radius: 6px;
 }
-.count-container span {
+.container span {
   font-size: 0.9rem;
-  height: 16px;
 }
 .count-container > div {
   margin-top: 0.1rem;
@@ -99,8 +99,9 @@ main > div {
   pointer-events: none;
   opacity: 0.7;
   border-bottom: 1px solid transparent;
+  filter: grayscale(1);
 }
-.count-container a {
+.container a {
   position: relative;
   display: inline-block;
   border-radius: 6px;
@@ -114,16 +115,22 @@ main > div {
   border-color: #9c64ff;
   transition: border-color 0.2s, color 0.2s;
 }
-.count-container a.active {
+.container a.active {
   border-color: #fff;
   border-bottom-color: #fff;
 }
 .count-container a:last-of-type {
   border-color: transparent;
 }
-.count-container a::before {
+.container a::before {
   content: '';
   position: absolute;
+}
+
+.options-container {
+  position: absolute;
+  bottom: 0;
+  right: 142px;
 }
 
 .active {

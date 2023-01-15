@@ -1,23 +1,33 @@
 import 'fpsmeter';
 
-const getPage = (search) =>
+const getCount = (search) =>
   search
     .substring(1)
     .split('&')
     .filter((s) => s.startsWith('count='))
     .map((s) => parseInt(s.split('=')[1]))[0];
 
+const getType = (search) =>
+  search
+    .substring(1)
+    .split('&')
+    .filter((s) => s.startsWith('type='))
+    .map((s) => s.split('=')[1])[0];
+
 class Engine {
   constructor() {
     this.canvas = document.querySelector('#canvas');
     this.fpsContainer = document.querySelector('.fps-container');
     this.countLinks = document.querySelectorAll('.count-container a');
+    this.typeLinks = document.querySelectorAll('.options-container a');
     canvas.width = 1024;
     canvas.height = 480;
     this.width = this.canvas.width;
     this.height = this.canvas.height;
     this.count = 0;
 
+    this.initCountLink();
+    this.initTypeLink();
     this.init();
   }
 
@@ -35,7 +45,7 @@ class Engine {
   }
 
   initCountLink() {
-    const toggleLinks = (count) => {
+    const toggleCountLinks = (count) => {
       this.countLinks.forEach((link) => {
         link.classList.toggle('active', false);
       });
@@ -50,20 +60,69 @@ class Engine {
         );
     };
     const { search, pathname } = window.location;
-    const count = getPage(search);
+    const count = getCount(search);
     this.count = count || 1000;
-    toggleLinks(this.count);
+    toggleCountLinks(this.count);
     this.countLinks.forEach((link, _index) => {
       link.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
         const count = parseInt(link.innerText);
-        if (!count) {
-          console.log(''); // TODO
-          toggleLinks(count);
-        } else {
-          window.history.replaceState({}, pathname, `?count=${count}`);
-          toggleLinks(count);
+        const type = getType(search);
+        if (count) {
+          if (type)
+            window.history.replaceState(
+              {},
+              pathname,
+              `?count=${count}&type=${type}`
+            );
+          else window.history.replaceState({}, pathname, `?count=${count}`);
+          toggleCountLinks(count);
+          this.init();
+          this.render();
+        }
+      });
+    });
+  }
+
+  initTypeLink() {
+    const toggleTypeLinks = (type) => {
+      this.typeLinks.forEach((link) => {
+        link.classList.toggle('active', false);
+      });
+      const link = [...this.typeLinks].filter(
+        (l) => l.innerText.toLowerCase() == type
+      )[0];
+      if (link) {
+        link.classList.toggle('active', true);
+        this.type = type;
+      } else
+        this.typeLinks[this.typeLinks.length - 1].classList.toggle(
+          'active',
+          true
+        );
+    };
+    const { search, pathname } = window.location;
+    const type = getType(search);
+    this.type = ['stroke', 'fill', 'sprite'].includes(type)
+      ? type
+      : null || 'stroke';
+    toggleTypeLinks(this.type);
+    this.typeLinks.forEach((link, _index) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const type = link.innerText.toLowerCase();
+        const count = getCount(search);
+        if (type) {
+          if (count)
+            window.history.replaceState(
+              {},
+              pathname,
+              `?count=${count}&type=${type}`
+            );
+          else window.history.replaceState({}, pathname, `?type=${type}`);
+          toggleTypeLinks(type);
           this.init();
           this.render();
         }
@@ -80,8 +139,10 @@ class Engine {
       ml.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
-        const count = getPage(search);
-        const href = count ? `${ml.pathname}?count=${count}` : ml.pathname;
+        const count = getCount(search);
+        const type = getType(search);
+        let href = count ? `${ml.pathname}?count=${count}` : ml.pathname;
+        if (type) href += `${count ? '&' : ''}type=${type}`;
         window.location.href = href;
       });
     });
@@ -89,7 +150,6 @@ class Engine {
 
   init() {
     this.initFpsmeter();
-    this.initCountLink();
     this.initNavLink();
   }
 
