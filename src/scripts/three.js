@@ -41,6 +41,15 @@ class ThreeEngine extends Engine {
     // Particle creation
     const particles = new Array(this.count);
     const rnd = [1, -1];
+    const meshMaterial = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      side: THREE.FrontSide,
+      depthTest: false,
+    });
+    let lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
+    if (this.type === 'fill')
+      lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 });
+
     for (let i = 0; i < this.count; i++) {
       const size = 10 + Math.random() * 80;
       const x = Math.random() * this.width;
@@ -51,14 +60,17 @@ class ThreeEngine extends Engine {
       ];
 
       const geometry = new THREE.CircleGeometry(size);
+      let plane;
+      if (this.type === 'fill') {
+        plane = new THREE.Mesh(geometry, meshMaterial);
+        plane.position.set(x, y, 0);
+        this.scene.add(plane);
+      }
       const edges = new THREE.EdgesGeometry(geometry);
-      const line = new THREE.LineSegments(
-        edges,
-        new THREE.LineBasicMaterial({ color: 0xffffff })
-      );
+      const line = new THREE.LineSegments(edges, lineMaterial);
       line.position.set(x, y, 0);
       this.scene.add(line);
-      particles[i] = { x, y, size: size, dx, dy, el: line };
+      particles[i] = { x, y, size: size, dx, dy, el: [line, plane] };
     }
     this.particles = particles;
   }
@@ -74,8 +86,12 @@ class ThreeEngine extends Engine {
       if (r.x > this.width) r.dx *= -1;
       else if (r.y > this.height) r.dy *= -1;
 
-      r.el.position.x = r.x;
-      r.el.position.y = r.y;
+      r.el[0].position.x = r.x;
+      r.el[0].position.y = r.y;
+      if (r.el[1]) {
+        r.el[1].position.x = r.x;
+        r.el[1].position.y = r.y;
+      }
     }
     this.renderer.render(this.scene, this.camera);
 
