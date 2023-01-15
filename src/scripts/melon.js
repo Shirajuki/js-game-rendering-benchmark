@@ -45,7 +45,7 @@ class Graphics extends me.Renderable {
   }
 }
 
-class CanvasEngine extends Engine {
+class MelonEngine extends Engine {
   constructor() {
     super();
   }
@@ -79,6 +79,6 @@ class CanvasEngine extends Engine {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const engine = new CanvasEngine();
+  const engine = new MelonEngine();
   engine.render();
 });
