@@ -146,6 +146,11 @@ a.active {
   border: 1px solid white;
   border-radius: 50%;
 }
+.particle.fill {
+  background-color: white;
+  border: 1px solid black;
+}
+
 canvas,
 .canvas {
   display: inline-block;

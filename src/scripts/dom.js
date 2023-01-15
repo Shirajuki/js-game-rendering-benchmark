@@ -24,7 +24,8 @@ class DOMEngine extends Engine {
       ];
 
       const particle = document.createElement('div');
-      particle.className = 'particle';
+      if (this.type === 'stroke') particle.className = 'particle';
+      else if (this.type === 'fill') particle.className = 'particle fill';
       particle.style.left = x + 'px';
       particle.style.top = y + 'px';
       particle.style.width = size + 'px';
