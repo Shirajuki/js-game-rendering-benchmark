@@ -573,6 +573,11 @@ kaboom@^2000.2.10:
   resolved "https://registry.yarnpkg.com/kaboom/-/kaboom-2000.2.10.tgz#b8b6efa3f0e2d104e81dae5f3900f8f25d34a504"
   integrity sha512-OHWdRuRMNkTkpO0/1R4ljS4+vpPtf6PvN+S0WTe+PkPB6Z61rmunw4SKTQDkrCt7dDzEIZTnK1G6s7rttd61Bw==
 
+kontra@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/kontra/-/kontra-8.0.0.tgz#661b46b650ed86c9c1a71e723b54dc2a7ab1e30b"
+  integrity sha512-7Go/K4S+6gtyillSKSkSlNq46neuIWGvof9PYyzBwiBKGrs+1GHzsDknaeIID3GulV+sK1oKcV0hB2CyyO7ePQ==
+
 melonjs@^14.4.0:
   version "14.4.0"
   resolved "https://registry.yarnpkg.com/melonjs/-/melonjs-14.4.0.tgz#c44cecc77149367f2653463c2a7d42be0d4c7db5"
