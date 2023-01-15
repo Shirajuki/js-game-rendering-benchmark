@@ -40,8 +40,15 @@ class PixiEngine extends Engine {
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
       const particle = new PIXI.Graphics();
-      particle.lineStyle(1, 0xffffff, 1);
-      particle.drawCircle(-size / 2, -size / 2, size, 0, Math.PI);
+      if (this.type === 'stroke') {
+        particle.lineStyle(1, 0xffffff, 1);
+        particle.drawCircle(-size / 2, -size / 2, size, 0, Math.PI);
+      } else if (this.type === 'fill') {
+        particle.beginFill(0xffffff);
+        particle.lineStyle(1, 0x000000, 1);
+        particle.drawCircle(-size / 2, -size / 2, size, 0, Math.PI);
+        particle.endFill();
+      }
       particle.position.set(x, y);
       this.app.stage.addChild(particle);
       particles[i] = { x, y, size: size, dx, dy, el: particle };
