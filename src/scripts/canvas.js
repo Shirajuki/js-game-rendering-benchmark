@@ -27,7 +27,8 @@ class CanvasEngine extends Engine {
     this.particles = particles;
 
     this.ctx = this.canvas.getContext('2d');
-    this.ctx.strokeStyle = 'white';
+    this.ctx.strokeStyle = this.type === 'stroke' ? 'white' : 'black';
+    if (this.type === 'fill') this.ctx.fillStyle = 'white';
     this.ctx.lineWidth = 1;
   }
   render() {
@@ -46,7 +47,8 @@ class CanvasEngine extends Engine {
       else if (r.y > this.height) r.dy *= -1;
       this.ctx.beginPath();
       this.ctx.arc(r.x, r.y, r.size, 0, 2 * Math.PI);
-      this.ctx.stroke();
+      if (this.type === 'fill') this.ctx.fill();
+      if (this.type != 'sprite') this.ctx.stroke();
     }
 
     this.fpsmeter.tick();
