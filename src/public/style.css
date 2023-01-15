@@ -21,7 +21,7 @@ a {
   color: #9c64ff;
   text-decoration: none;
   border-bottom: 1px solid #9c64ff;
-  transition: all 0.2s;
+  transition: color 0.2s;
 }
 a:hover {
   color: #934ddd;
