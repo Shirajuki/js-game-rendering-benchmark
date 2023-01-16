@@ -3,15 +3,23 @@ import Engine from './engine.js';
 
 const scene = (engine) => {
   return {
-    preload() {},
+    preload() {
+      this.load.image('sprite', 'sprite.png');
+    },
     create() {
       for (let i = 0; i < engine.count; i++) {
         const r = engine.particles[i];
-        const particle = this.add.circle(r.x, r.y, r.size, 0xffffff);
-        if (engine.type === 'stroke') {
-          particle.setStrokeStyle(1, 0xffffff);
-          particle.isFilled = false;
-        } else if (engine.type === 'fill') particle.setStrokeStyle(1, 0x000000);
+        let particle;
+        if (engine.type === 'sprite') {
+          particle = this.add.sprite(r.x, r.y, 'sprite');
+        } else {
+          particle = this.add.circle(r.x, r.y, r.size, 0xffffff);
+          if (engine.type === 'stroke') {
+            particle.setStrokeStyle(1, 0xffffff);
+            particle.isFilled = false;
+          } else if (engine.type === 'fill')
+            particle.setStrokeStyle(1, 0x000000);
+        }
 
         engine.particles[i].el = particle;
       }
@@ -27,9 +35,10 @@ const scene = (engine) => {
         else if (r.y + r.size < 0) r.dy *= -1;
         if (r.x > engine.width) r.dx *= -1;
         else if (r.y > engine.height) r.dy *= -1;
-
-        r.el.x = r.x;
-        r.el.y = r.y;
+        if (r.el) {
+          r.el.x = r.x;
+          r.el.y = r.y;
+        }
       }
       engine.fpsmeter.tick();
     },
@@ -82,7 +91,8 @@ class CanvasEngine extends Engine {
     this.particles = particles;
   }
   render() {
-    new Phaser.Game(this.config);
+    if (this.game) this.game.destroy(false, false);
+    this.game = new Phaser.Game(this.config);
   }
 }
 
