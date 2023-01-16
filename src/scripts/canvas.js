@@ -11,6 +11,11 @@ class CanvasEngine extends Engine {
     this.canvas.innerHTML = '';
     window.cancelAnimationFrame(this.request);
 
+    if (this.type === 'sprite') {
+      this.sprite = new Image();
+      this.sprite.src = '/sprite.png';
+    }
+
     // Particle creation
     const particles = new Array(this.count);
     const rnd = [1, -1];
@@ -45,10 +50,17 @@ class CanvasEngine extends Engine {
       else if (r.y + r.size < 0) r.dy *= -1;
       if (r.x > this.width) r.dx *= -1;
       else if (r.y > this.height) r.dy *= -1;
-      this.ctx.beginPath();
-      this.ctx.arc(r.x, r.y, r.size, 0, 2 * Math.PI);
-      if (this.type === 'fill') this.ctx.fill();
-      if (this.type != 'sprite') this.ctx.stroke();
+      if (this.type === 'sprite') {
+        if (this.sprite.complete) {
+          this.ctx.beginPath();
+          this.ctx.drawImage(this.sprite, r.x, r.y);
+        }
+      } else {
+        this.ctx.beginPath();
+        this.ctx.arc(r.x, r.y, r.size, 0, 2 * Math.PI);
+        if (this.type === 'fill') this.ctx.fill();
+        if (this.type != 'sprite') this.ctx.stroke();
+      }
     }
 
     this.fpsmeter.tick();
