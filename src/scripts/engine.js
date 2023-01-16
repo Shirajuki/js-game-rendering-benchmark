@@ -68,7 +68,7 @@ class Engine {
         event.preventDefault();
         event.stopPropagation();
         const count = parseInt(link.innerText);
-        const type = getType(search);
+        const type = getType(search) || this.type;
         if (count) {
           if (type)
             window.history.replaceState(
@@ -113,7 +113,7 @@ class Engine {
         event.preventDefault();
         event.stopPropagation();
         const type = link.innerText.toLowerCase();
-        const count = getCount(search);
+        const count = getCount(search) || this.count;
         if (type) {
           if (count)
             window.history.replaceState(
@@ -142,7 +142,7 @@ class Engine {
         const count = getCount(search);
         const type = getType(search);
         let href = count ? `${ml.pathname}?count=${count}` : ml.pathname;
-        if (type) href += `${count ? '&' : ''}type=${type}`;
+        if (type) href += `${count ? '&' : '?'}type=${type}`;
         window.location.href = href;
       });
     });
