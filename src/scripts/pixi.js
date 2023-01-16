@@ -5,7 +5,7 @@ class PixiEngine extends Engine {
   constructor() {
     super();
   }
-  init() {
+  async init() {
     super.init();
 
     // Clear the canvas
@@ -20,7 +20,6 @@ class PixiEngine extends Engine {
       backgroundColor: 0x1a1a1a,
       antialias: true,
     });
-    console.log(this.app.renderer);
     this.app.view.classList.add('canvas');
 
     // Update canvas with application view
@@ -29,6 +28,9 @@ class PixiEngine extends Engine {
     main.appendChild(this.app.view);
 
     // Particle creation
+    if (this.type === 'sprite') {
+      this.texture = PIXI.Texture.from('/sprite.png');
+    }
     const particles = new Array(this.count);
     const rnd = [1, -1];
     for (let i = 0; i < this.count; i++) {
@@ -39,15 +41,20 @@ class PixiEngine extends Engine {
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
-      const particle = new PIXI.Graphics();
-      if (this.type === 'stroke') {
-        particle.lineStyle(1, 0xffffff, 1);
-        particle.drawCircle(-size / 2, -size / 2, size, 0, Math.PI);
-      } else if (this.type === 'fill') {
-        particle.beginFill(0xffffff);
-        particle.lineStyle(1, 0x000000, 1);
-        particle.drawCircle(-size / 2, -size / 2, size, 0, Math.PI);
-        particle.endFill();
+      let particle;
+      if (this.type === 'sprite') {
+        particle = new PIXI.Sprite(this.texture);
+      } else {
+        particle = new PIXI.Graphics();
+        if (this.type === 'stroke') {
+          particle.lineStyle(1, 0xffffff, 1);
+          particle.drawCircle(-size / 2, -size / 2, size, 0, Math.PI);
+        } else if (this.type === 'fill') {
+          particle.beginFill(0xffffff);
+          particle.lineStyle(1, 0x000000, 1);
+          particle.drawCircle(-size / 2, -size / 2, size, 0, Math.PI);
+          particle.endFill();
+        }
       }
       particle.position.set(x, y);
       this.app.stage.addChild(particle);
