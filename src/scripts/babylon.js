@@ -38,6 +38,15 @@ class BabylonEngine extends Engine {
     // Target the camera to scene origin
     camera.setTarget(BABYLON.Vector3.Zero());
 
+    var light0 = new BABYLON.HemisphericLight(
+      'Hemi0',
+      new BABYLON.Vector3(0, 0, 0),
+      this.scene
+    );
+    light0.diffuse = new BABYLON.Color3(1, 1, 1);
+    light0.specular = new BABYLON.Color3(1, 1, 1);
+    light0.groundColor = new BABYLON.Color3(1, 1, 1);
+
     let optimizerOptions = new BABYLON.SceneOptimizerOptions(60, 500);
     optimizerOptions.addOptimization(
       new BABYLON.HardwareScalingOptimization(0, 1)
@@ -76,12 +85,34 @@ class BabylonEngine extends Engine {
         { points: points, updatable: false },
         this.scene
       );
-      circle.color = new BABYLON.Color3(1, 1, 1);
+      circle.color = new BABYLON.Color3.White();
       circle.position.x = -x;
       circle.position.z = -y;
-      circle.position.y = 0;
+      circle.position.y = -i - 1;
+      let filled;
+      if (this.type === 'fill') {
+        const mat = new BABYLON.StandardMaterial('mat1', this.scene);
+        mat.alpha = 1;
+        mat.diffuseColor = new BABYLON.Color3(1, 1, 1);
+        mat.emissiveColor = new BABYLON.Color3.White();
+        mat.backFaceCulling = false;
+        filled = BABYLON.MeshBuilder.CreateRibbon(
+          'filled_circle',
+          {
+            pathArray: [points],
+            closePath: true,
+          },
+          this.scene
+        );
+        filled.color = BABYLON.Color3.White();
+        filled.material = mat;
+        filled.position.x = -x;
+        filled.position.z = -y;
+        filled.position.y = -i;
+        circle.color = new BABYLON.Color3.Black();
+      }
 
-      particles[i] = { x, y, size: size, dx, dy, el: circle };
+      particles[i] = { x, y, size: size, dx, dy, el: [circle, filled] };
     }
     this.particles = particles;
   }
@@ -97,8 +128,12 @@ class BabylonEngine extends Engine {
         else if (r.y + r.size < 0) r.dy *= -1;
         if (r.x > this.width) r.dx *= -1;
         else if (r.y > this.height) r.dy *= -1;
-        r.el.position.x = -r.x;
-        r.el.position.z = -r.y;
+        r.el[0].position.x = -r.x;
+        r.el[0].position.z = -r.y;
+        if (r.el[1]) {
+          r.el[1].position.x = -r.x;
+          r.el[1].position.z = -r.y;
+        }
       }
       this.scene.render();
       this.fpsmeter.tick();
