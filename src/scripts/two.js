@@ -38,7 +38,8 @@ class TwoEngine extends Engine {
       ];
       const circle = this.two.makeCircle(0, 0, size);
       circle.position.set(0, 0);
-      circle.noFill().stroke = '#ffffff';
+      if (this.type === 'stroke') circle.noFill().stroke = '#ffffff';
+      else if (this.type === 'fill') circle.stroke = '#000000';
       particles[i] = { x, y, size: size, dx, dy, el: circle };
     }
     this.particles = particles;
