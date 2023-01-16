@@ -39,7 +39,14 @@ class Graphics extends me.Renderable {
       else if (r.y + r.size < 0) r.dy *= -1;
       if (r.x > this.engine.width) r.dx *= -1;
       else if (r.y > this.engine.height) r.dy *= -1;
-      renderer.strokeArc(r.x, r.y, r.size, 0, Math.PI * 2);
+      if (this.engine.type === 'stroke')
+        renderer.strokeArc(r.x, r.y, r.size, 0, Math.PI * 2);
+      if (this.engine.type === 'fill') {
+        renderer.setColor('#ffffff');
+        renderer.fillArc(r.x, r.y, r.size, 0, Math.PI * 2, false);
+        renderer.setColor('#000000');
+        renderer.strokeArc(r.x, r.y, r.size, 0, Math.PI * 2, false);
+      }
     }
     this.engine.fpsmeter.tick();
   }
