@@ -36,10 +36,16 @@ class TwoEngine extends Engine {
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
-      const circle = this.two.makeCircle(0, 0, size);
+      let circle;
+      if (this.type === 'sprite') {
+        circle = new Two.Sprite('/sprite.png', x, y, 1, 1);
+        this.two.add(circle);
+      } else {
+        circle = this.two.makeCircle(0, 0, size);
+        if (this.type === 'stroke') circle.noFill().stroke = '#ffffff';
+        else if (this.type === 'fill') circle.stroke = '#000000';
+      }
       circle.position.set(0, 0);
-      if (this.type === 'stroke') circle.noFill().stroke = '#ffffff';
-      else if (this.type === 'fill') circle.stroke = '#000000';
       particles[i] = { x, y, size: size, dx, dy, el: circle };
     }
     this.particles = particles;
