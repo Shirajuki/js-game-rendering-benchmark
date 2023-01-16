@@ -6,6 +6,7 @@ class Graphics extends me.Renderable {
     super(0, 0, engine.width, engine.heigth);
     this.engine = engine;
     this.anchorPoint.set(0, 0);
+    me.state.change(me.state.DEFAULT, true);
 
     // Particle creation
     const particles = new Array(engine.count);
@@ -18,9 +19,19 @@ class Graphics extends me.Renderable {
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
-      particles[i] = { x, y, size: size, dx, dy };
+      let sprite;
+      if (engine.type === 'sprite') {
+        sprite = new me.Sprite(x, y, {
+          image: '/sprite.png',
+          framewidth: 64,
+          frameheight: 64,
+          anchorPoint: new me.Vector2d(0.5, 0.5),
+        });
+        me.game.world.addChild(sprite);
+      }
+      particles[i] = { x, y, size: size, dx, dy, el: sprite };
     }
-    this.particles = particles;
+    engine.particles = particles;
   }
   update() {
     return true;
@@ -30,7 +41,7 @@ class Graphics extends me.Renderable {
     renderer.setColor('#ffffff');
 
     // Particle animation
-    const particles = this.particles;
+    const particles = this.engine.particles;
     for (let i = 0; i < this.engine.count; i++) {
       const r = particles[i];
       r.x -= r.dx;
@@ -41,11 +52,13 @@ class Graphics extends me.Renderable {
       else if (r.y > this.engine.height) r.dy *= -1;
       if (this.engine.type === 'stroke')
         renderer.strokeArc(r.x, r.y, r.size, 0, Math.PI * 2);
-      if (this.engine.type === 'fill') {
+      else if (this.engine.type === 'fill') {
         renderer.setColor('#ffffff');
         renderer.fillArc(r.x, r.y, r.size, 0, Math.PI * 2, false);
         renderer.setColor('#000000');
         renderer.strokeArc(r.x, r.y, r.size, 0, Math.PI * 2, false);
+      } else if (this.engine.type === 'sprite' && r.el) {
+        r.el.pos.set(r.x, r.y);
       }
     }
     this.engine.fpsmeter.tick();
@@ -64,6 +77,7 @@ class MelonEngine extends Engine {
     window.cancelAnimationFrame(this.request);
 
     // Create if new, else reset/empty the game world
+    this.textureLoaded = false;
     if (me.game.world) {
       me.game.world.reset();
     } else {
@@ -76,9 +90,22 @@ class MelonEngine extends Engine {
         subPixel: false,
       });
     }
+    me.loader.preload(
+      [
+        {
+          name: 'sprite',
+          type: 'image',
+          src: '/sprite.png',
+        },
+      ],
+      () => {
+        this.textureLoaded = true;
+        this.render();
+      }
+    );
   }
   render() {
-    me.game.world.addChild(new Graphics(this));
+    if (this.textureLoaded) me.game.world.addChild(new Graphics(this));
   }
 }
 
