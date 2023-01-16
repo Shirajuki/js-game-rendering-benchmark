@@ -50,6 +50,10 @@ class ThreeEngine extends Engine {
     if (this.type === 'fill')
       lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 });
 
+    // Sprite texture
+    const map = new THREE.TextureLoader().load('/sprite.png');
+    const material = new THREE.SpriteMaterial({ map: map });
+
     for (let i = 0; i < this.count; i++) {
       const size = 10 + Math.random() * 80;
       const x = Math.random() * this.width;
@@ -60,14 +64,20 @@ class ThreeEngine extends Engine {
       ];
 
       const geometry = new THREE.CircleGeometry(size);
-      let plane;
-      if (this.type === 'fill') {
-        plane = new THREE.Mesh(geometry, meshMaterial);
-        plane.position.set(x, y, 0);
-        this.scene.add(plane);
+      let line, plane;
+      if (this.type === 'sprite') {
+        line = new THREE.Sprite(material);
+        line.scale.x = 64;
+        line.scale.y = 64;
+      } else {
+        if (this.type === 'fill') {
+          plane = new THREE.Mesh(geometry, meshMaterial);
+          plane.position.set(x, y, 0);
+          this.scene.add(plane);
+        }
+        const edges = new THREE.EdgesGeometry(geometry);
+        line = new THREE.LineSegments(edges, lineMaterial);
       }
-      const edges = new THREE.EdgesGeometry(geometry);
-      const line = new THREE.LineSegments(edges, lineMaterial);
       line.position.set(x, y, 0);
       this.scene.add(line);
       particles[i] = { x, y, size: size, dx, dy, el: [line, plane] };
