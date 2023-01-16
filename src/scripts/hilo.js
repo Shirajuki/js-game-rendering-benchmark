@@ -79,12 +79,21 @@ class HiloEngine extends Engine {
         x: x,
         y: y,
       });
-      circle
-        .lineStyle(1, '#ffffff')
-        .drawCircle(1, 1, size - 1)
-        .closePath()
-        .endFill()
-        .addTo(this.graphicScene);
+      if (this.type === 'stroke')
+        circle
+          .lineStyle(1, '#ffffff')
+          .drawCircle(1, 1, size - 1)
+          .closePath()
+          .endFill()
+          .addTo(this.graphicScene);
+      else if (this.type === 'fill')
+        circle
+          .beginFill('#fff')
+          .lineStyle(1, '#000000')
+          .drawCircle(1, 1, size - 1)
+          .closePath()
+          .endFill()
+          .addTo(this.graphicScene);
       particles[i] = { x, y, size: size, dx, dy, el: circle };
     }
     this.particles = particles;
