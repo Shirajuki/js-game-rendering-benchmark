@@ -18,6 +18,10 @@ class KontraEngine extends Engine {
       this.ctx.strokeStyle = 'white';
       this.ctx.lineWidth = 1;
     }
+    if (this.type === 'fill') {
+      this.ctx.strokeStyle = 'black';
+      this.ctx.fillStyle = 'white';
+    }
 
     // Particle creation
     const particles = new Array(this.count);
@@ -55,6 +59,7 @@ class KontraEngine extends Engine {
           const r = this.particles[i];
           this.ctx.beginPath();
           this.ctx.arc(r.x, r.y, r.size, 0, 2 * Math.PI);
+          if (this.type === 'fill') this.ctx.fill();
           this.ctx.stroke();
         }
       },
