@@ -15,6 +15,7 @@ class KaboomEngine extends Engine {
       width: this.width,
       height: this.height,
     });
+    k.loadSprite('sprite', '/sprite.png');
     this.k = k;
 
     // Clear the canvas
@@ -32,15 +33,21 @@ class KaboomEngine extends Engine {
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
-      const circle = k.add([
-        k.pos(x, y),
-        k.circle(size),
-        k.opacity(this.type === 'stroke' ? 0 : 1),
-        k.outline(
-          1,
-          this.type === 'stroke' ? k.rgb(255, 255, 255) : k.rgb(0, 0, 0)
-        ),
-      ]);
+      let circle;
+      if (this.type === 'sprite') {
+        circle = k.add([k.sprite('sprite'), k.pos(x, y)]);
+      } else {
+        circle = k.add([
+          k.pos(x, y),
+          k.circle(size),
+          k.opacity(this.type === 'stroke' ? 0 : 1),
+          k.outline(
+            1,
+            this.type === 'stroke' ? k.rgb(255, 255, 255) : k.rgb(0, 0, 0)
+          ),
+        ]);
+      }
+
       particles[i] = { x, y, size: size, dx, dy, el: circle };
     }
     this.particles = particles;
