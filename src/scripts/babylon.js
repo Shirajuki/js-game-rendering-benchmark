@@ -54,6 +54,15 @@ class BabylonEngine extends Engine {
     // Optimizer
     const optimizer = new BABYLON.SceneOptimizer(this.scene, optimizerOptions);
 
+    // Spritemanager
+    const spriteManager = new BABYLON.SpriteManager(
+      'textures',
+      '/sprite.png',
+      1000000,
+      { width: 64, height: 64 },
+      this.scene
+    );
+
     // Particle creation
     const particles = new Array(this.count);
     const rnd = [1, -1];
@@ -67,49 +76,60 @@ class BabylonEngine extends Engine {
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
 
-      // Create circles by drawing lines in a 360 degree radius
-      let points = [];
-      if (circles[size]) {
-        points = circles[size];
-      } else {
-        const radius = size;
-        for (let i = -Math.PI; i <= Math.PI; i += Math.PI / 360) {
-          points.push(
-            new BABYLON.Vector3(radius * Math.cos(i), 0, radius * Math.sin(i))
-          );
-        }
-        circles[size] = points;
-      }
-      const circle = BABYLON.MeshBuilder.CreateLines(
-        'circle',
-        { points: points, updatable: false },
-        this.scene
-      );
-      circle.color = new BABYLON.Color3.White();
-      circle.position.x = -x;
-      circle.position.z = -y;
-      circle.position.y = -i - 1;
+      let circle;
       let filled;
-      if (this.type === 'fill') {
-        const mat = new BABYLON.StandardMaterial('mat1', this.scene);
-        mat.alpha = 1;
-        mat.diffuseColor = new BABYLON.Color3(1, 1, 1);
-        mat.emissiveColor = new BABYLON.Color3.White();
-        mat.backFaceCulling = false;
-        filled = BABYLON.MeshBuilder.CreateRibbon(
-          'filled_circle',
-          {
-            pathArray: [points],
-            closePath: true,
-          },
+      if (this.type === 'sprite') {
+        circle = new BABYLON.Sprite('sprite', spriteManager);
+        circle.width = 64;
+        circle.height = 64;
+        circle.angle = Math.PI;
+        circle.position.x = -x;
+        circle.position.z = -y;
+        circle.position.y = -i;
+      } else {
+        // Create circles by drawing lines in a 360 degree radius
+        let points = [];
+        if (circles[size]) {
+          points = circles[size];
+        } else {
+          const radius = size;
+          for (let i = -Math.PI; i <= Math.PI; i += Math.PI / 360) {
+            points.push(
+              new BABYLON.Vector3(radius * Math.cos(i), 0, radius * Math.sin(i))
+            );
+          }
+          circles[size] = points;
+        }
+        circle = BABYLON.MeshBuilder.CreateLines(
+          'circle',
+          { points: points, updatable: false },
           this.scene
         );
-        filled.color = BABYLON.Color3.White();
-        filled.material = mat;
-        filled.position.x = -x;
-        filled.position.z = -y;
-        filled.position.y = -i;
-        circle.color = new BABYLON.Color3.Black();
+        circle.color = new BABYLON.Color3.White();
+        circle.position.x = -x;
+        circle.position.z = -y;
+        circle.position.y = -i - 1;
+        if (this.type === 'fill') {
+          const mat = new BABYLON.StandardMaterial('mat1', this.scene);
+          mat.alpha = 1;
+          mat.diffuseColor = new BABYLON.Color3(1, 1, 1);
+          mat.emissiveColor = new BABYLON.Color3.White();
+          mat.backFaceCulling = false;
+          filled = BABYLON.MeshBuilder.CreateRibbon(
+            'filled_circle',
+            {
+              pathArray: [points],
+              closePath: true,
+            },
+            this.scene
+          );
+          filled.color = BABYLON.Color3.White();
+          filled.material = mat;
+          filled.position.x = -x;
+          filled.position.z = -y;
+          filled.position.y = -i;
+          circle.color = new BABYLON.Color3.Black();
+        }
       }
 
       particles[i] = { x, y, size: size, dx, dy, el: [circle, filled] };
