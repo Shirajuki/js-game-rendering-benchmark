@@ -150,6 +150,10 @@ a.active {
   background-color: white;
   border: 1px solid black;
 }
+.particle.sprite {
+  border: initial;
+  border-radius: initial;
+}
 
 canvas,
 .canvas {

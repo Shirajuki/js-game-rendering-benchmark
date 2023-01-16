@@ -23,13 +23,20 @@ class DOMEngine extends Engine {
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
 
-      const particle = document.createElement('div');
-      if (this.type === 'stroke') particle.className = 'particle';
-      else if (this.type === 'fill') particle.className = 'particle fill';
+      let particle;
+      if (this.type === 'sprite') {
+        particle = document.createElement('img');
+        particle.src = '/sprite.png';
+        particle.className = 'particle sprite';
+      } else {
+        particle = document.createElement('div');
+        if (this.type === 'stroke') particle.className = 'particle';
+        else if (this.type === 'fill') particle.className = 'particle fill';
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+      }
       particle.style.left = x + 'px';
       particle.style.top = y + 'px';
-      particle.style.width = size + 'px';
-      particle.style.height = size + 'px';
       this.canvas.appendChild(particle);
       particles[i] = { x, y, size: size, dx, dy, el: particle };
     }
