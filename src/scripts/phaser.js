@@ -7,8 +7,12 @@ const scene = (engine) => {
     create() {
       for (let i = 0; i < engine.count; i++) {
         const r = engine.particles[i];
-        const particle = this.add.circle(r.x, r.y, r.size);
-        particle.setStrokeStyle(1, 0xffffff);
+        const particle = this.add.circle(r.x, r.y, r.size, 0xffffff);
+        if (engine.type === 'stroke') {
+          particle.setStrokeStyle(1, 0xffffff);
+          particle.isFilled = false;
+        } else if (engine.type === 'fill') particle.setStrokeStyle(1, 0x000000);
+
         engine.particles[i].el = particle;
       }
     },
