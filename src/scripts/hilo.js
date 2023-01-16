@@ -73,27 +73,34 @@ class HiloEngine extends Engine {
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
-      const circle = new Hilo.Graphics({
-        width: size * 2,
-        height: size * 2,
-        x: x,
-        y: y,
-      });
-      if (this.type === 'stroke')
-        circle
-          .lineStyle(1, '#ffffff')
-          .drawCircle(1, 1, size - 1)
-          .closePath()
-          .endFill()
-          .addTo(this.graphicScene);
-      else if (this.type === 'fill')
-        circle
-          .beginFill('#fff')
-          .lineStyle(1, '#000000')
-          .drawCircle(1, 1, size - 1)
-          .closePath()
-          .endFill()
-          .addTo(this.graphicScene);
+      let circle;
+      if (this.type === 'sprite') {
+        circle = new Hilo.Bitmap({
+          image: 'sprite.png',
+        }).addTo(this.graphicScene);
+      } else {
+        circle = new Hilo.Graphics({
+          width: size * 2,
+          height: size * 2,
+          x: x,
+          y: y,
+        });
+        if (this.type === 'stroke')
+          circle
+            .lineStyle(1, '#ffffff')
+            .drawCircle(1, 1, size - 1)
+            .closePath()
+            .endFill()
+            .addTo(this.graphicScene);
+        else if (this.type === 'fill')
+          circle
+            .beginFill('#fff')
+            .lineStyle(1, '#000000')
+            .drawCircle(1, 1, size - 1)
+            .closePath()
+            .endFill()
+            .addTo(this.graphicScene);
+      }
       particles[i] = { x, y, size: size, dx, dy, el: circle };
     }
     this.particles = particles;
