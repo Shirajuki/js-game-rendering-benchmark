@@ -35,8 +35,11 @@ class KaboomEngine extends Engine {
       const circle = k.add([
         k.pos(x, y),
         k.circle(size),
-        k.opacity(0),
-        k.outline(1, k.rgb(255, 255, 255)),
+        k.opacity(this.type === 'stroke' ? 0 : 1),
+        k.outline(
+          1,
+          this.type === 'stroke' ? k.rgb(255, 255, 255) : k.rgb(0, 0, 0)
+        ),
       ]);
       particles[i] = { x, y, size: size, dx, dy, el: circle };
     }
