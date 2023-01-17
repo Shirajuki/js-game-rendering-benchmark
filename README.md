@@ -9,7 +9,7 @@ This is a sprite-based performance test that compares a set of Javascript-based 
 - A preset of up to 10.000 different sprites moving on a canvas with various speed
   - A custom option through the count query is also available for comparing sprite counts between libraries more freely. Be aware that drawing a large number of sprites on specific libraries may cause the test to freeze.
   - Compare drawing of graphics/shapes and sprites through the type query
-- Different libraries used to render the scene are chosen only if they have been maintained in the previous month of this benchmark (17.01.2023). The following libraries compared and sorted by popularity (stars) are:
+- Different libraries used to render the scene are chosen only if they have been maintained in the previous month of this benchmark. The following libraries compared and sorted by popularity (stars) are:
 
 | Name                                                  | Stars                                                                          | Last Commit                                                                           | Description                                                                                                                                         | Game engine |
 | ----------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
