@@ -95,7 +95,7 @@ class MelonEngine extends Engine {
         {
           name: 'sprite',
           type: 'image',
-          src: '/sprite.png',
+          src: 'sprite.png',
         },
       ],
       () => {

@@ -57,7 +57,7 @@ class BabylonEngine extends Engine {
     // Spritemanager
     const spriteManager = new BABYLON.SpriteManager(
       'textures',
-      '/sprite.png',
+      'sprite.png',
       1000000,
       { width: 64, height: 64 },
       this.scene
@@ -83,6 +83,7 @@ class BabylonEngine extends Engine {
         circle.width = 64;
         circle.height = 64;
         circle.angle = Math.PI;
+        circle.invertU = true;
         circle.position.x = -x;
         circle.position.z = -y;
         circle.position.y = -i;

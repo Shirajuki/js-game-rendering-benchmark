@@ -51,7 +51,7 @@ class ThreeEngine extends Engine {
       lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 });
 
     // Sprite texture
-    const map = new THREE.TextureLoader().load('/sprite.png');
+    const map = new THREE.TextureLoader().load('sprite.png');
     const material = new THREE.SpriteMaterial({ map: map });
 
     for (let i = 0; i < this.count; i++) {

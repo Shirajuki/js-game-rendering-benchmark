@@ -13,7 +13,7 @@ class CanvasEngine extends Engine {
 
     if (this.type === 'sprite') {
       this.sprite = new Image();
-      this.sprite.src = '/sprite.png';
+      this.sprite.src = 'sprite.png';
     }
 
     // Particle creation

@@ -26,7 +26,7 @@ class DOMEngine extends Engine {
       let particle;
       if (this.type === 'sprite') {
         particle = document.createElement('img');
-        particle.src = '/sprite.png';
+        particle.src = 'sprite.png';
         particle.className = 'particle sprite';
       } else {
         particle = document.createElement('div');

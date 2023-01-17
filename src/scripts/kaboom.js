@@ -15,7 +15,7 @@ class KaboomEngine extends Engine {
       width: this.width,
       height: this.height,
     });
-    k.loadSprite('sprite', '/sprite.png');
+    k.loadSprite('sprite', 'sprite.png');
     this.k = k;
 
     // Clear the canvas

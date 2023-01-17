@@ -38,7 +38,7 @@ class TwoEngine extends Engine {
       ];
       let circle;
       if (this.type === 'sprite') {
-        circle = new Two.Sprite('/sprite.png', x, y, 1, 1);
+        circle = new Two.Sprite('sprite.png', x, y, 1, 1);
         this.two.add(circle);
       } else {
         circle = this.two.makeCircle(0, 0, size);

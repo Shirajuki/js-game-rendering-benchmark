@@ -29,7 +29,7 @@ class PixiEngine extends Engine {
 
     // Particle creation
     if (this.type === 'sprite') {
-      this.texture = PIXI.Texture.from('/sprite.png');
+      this.texture = PIXI.Texture.from('sprite.png');
     }
     const particles = new Array(this.count);
     const rnd = [1, -1];
