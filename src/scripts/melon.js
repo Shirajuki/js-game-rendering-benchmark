@@ -37,7 +37,6 @@ class Graphics extends me.Renderable {
     return true;
   }
   draw(renderer) {
-    renderer.clearColor('#1a1a1a');
     renderer.setColor('#ffffff');
 
     // Particle animation
@@ -89,6 +88,7 @@ class MelonEngine extends Engine {
         preferWebGL1: false,
         subPixel: false,
       });
+      me.game.world.backgroundColor.setColor('#1a1a1a');
     }
     me.loader.preload(
       [
