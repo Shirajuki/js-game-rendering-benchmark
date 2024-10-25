@@ -19,6 +19,7 @@
     "hilojs": "^2.0.2",
     "kaboom": "^2000.2.10",
     "kontra": "^8.0.0",
+    "litecanvas": "0.66.4",
     "melonjs": "^14.5.0",
     "phaser": "^3.55.2",
     "pixi.js": "^7.1.0",
