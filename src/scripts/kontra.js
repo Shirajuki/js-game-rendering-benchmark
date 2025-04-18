@@ -67,7 +67,6 @@ class KontraEngine extends Engine {
             r.el.y = r.y;
           }
         }
-        this.fpsmeter.tick();
       },
       render: () => {
         for (let i = 0; i < this.count; i++) {
@@ -81,6 +80,7 @@ class KontraEngine extends Engine {
             this.ctx.stroke();
           }
         }
+        this.fpsmeter.tick();
       },
     });
     this.loop.start();
