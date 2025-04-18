@@ -517,6 +517,11 @@ eventemitter3@^5.0.0:
   resolved "https://registry.npmjs.org/eventemitter3/-/eventemitter3-5.0.0.tgz"
   integrity sha512-riuVbElZZNXLeLEoprfNYoDSwTBRR44X3mnhdI1YcnENpWTCsTTVZ2zFuqQcpoyqPQIUXdiPEU0ECAq0KQRaHg==
 
+excalibur@^0.30.3:
+  version "0.30.3"
+  resolved "https://registry.yarnpkg.com/excalibur/-/excalibur-0.30.3.tgz#e005ae22f85b64bddf6bb788b406e42d3a8a0946"
+  integrity sha512-RUP3qQ6tFe9BJxvqh6p/I0B9rKMu+KGlHZruJyVOohiYUtCP0LsRgkVHxezvWtWsvCElVBL4PeCooE4KPlIldA==
+
 fpsmeter@^0.3.1:
   version "0.3.1"
   resolved "https://registry.npmjs.org/fpsmeter/-/fpsmeter-0.3.1.tgz"

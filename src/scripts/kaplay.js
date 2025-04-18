@@ -1,4 +1,4 @@
-import kaboom from 'kaboom';
+import kaplay from 'kaplay';
 import Engine from './engine.js';
 
 class KaplayEngine extends Engine {
