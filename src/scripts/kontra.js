@@ -2,9 +2,6 @@ import { init, GameLoop, Sprite } from 'kontra';
 import Engine from './engine.js';
 
 class KontraEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     super.init();
 

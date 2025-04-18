@@ -344,7 +344,7 @@ babylonjs@^5.42.0:
 
 core-js@^3.27.2:
   version "3.28.0"
-  resolved "https://registry.npmjs.org/core-js/-/core-js-3.28.0.tgz"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.28.0.tgz#ed8b9e99c273879fdfff0edfc77ee709a5800e4a"
   integrity sha512-GiZn9D4Z/rSYvTeg1ljAIsEqFm0LaN9gVtwDCrKL80zHtS31p9BAjmTxVqTQDMpwlMolJZOFntUG2uwyj7DAqw==
 
 earcut@2.2.4, earcut@^2.2.4:
@@ -575,7 +575,7 @@ is-core-module@^2.9.0:
 
 kaboom@^2000.2.10:
   version "2000.2.10"
-  resolved "https://registry.npmjs.org/kaboom/-/kaboom-2000.2.10.tgz"
+  resolved "https://registry.yarnpkg.com/kaboom/-/kaboom-2000.2.10.tgz#b8b6efa3f0e2d104e81dae5f3900f8f25d34a504"
   integrity sha512-OHWdRuRMNkTkpO0/1R4ljS4+vpPtf6PvN+S0WTe+PkPB6Z61rmunw4SKTQDkrCt7dDzEIZTnK1G6s7rttd61Bw==
 
 kontra@^8.0.0:

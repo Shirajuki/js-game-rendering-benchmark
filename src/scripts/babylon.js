@@ -2,9 +2,6 @@ import * as BABYLON from 'babylonjs';
 import Engine from './engine.js';
 
 class BabylonEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     super.init();
 
@@ -38,7 +35,7 @@ class BabylonEngine extends Engine {
     // Target the camera to scene origin
     camera.setTarget(BABYLON.Vector3.Zero());
 
-    var light0 = new BABYLON.HemisphericLight(
+    const light0 = new BABYLON.HemisphericLight(
       'Hemi0',
       new BABYLON.Vector3(0, 0, 0),
       this.scene
@@ -47,7 +44,7 @@ class BabylonEngine extends Engine {
     light0.specular = new BABYLON.Color3(1, 1, 1);
     light0.groundColor = new BABYLON.Color3(1, 1, 1);
 
-    let optimizerOptions = new BABYLON.SceneOptimizerOptions(60, 500);
+    const optimizerOptions = new BABYLON.SceneOptimizerOptions(60, 500);
     optimizerOptions.addOptimization(
       new BABYLON.HardwareScalingOptimization(0, 1)
     );

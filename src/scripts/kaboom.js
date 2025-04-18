@@ -2,9 +2,6 @@ import kaboom from 'kaboom';
 import Engine from './engine.js';
 
 class KaboomEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     super.init();
 

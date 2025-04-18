@@ -2,9 +2,6 @@ import * as PIXI from 'pixi.js';
 import Engine from './engine.js';
 
 class PixiEngine extends Engine {
-  constructor() {
-    super();
-  }
   async init() {
     super.init();
 

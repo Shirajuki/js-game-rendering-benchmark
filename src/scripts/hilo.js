@@ -2,9 +2,6 @@ import Hilo from 'hilojs';
 import Engine from './engine.js';
 
 class HiloEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     const GraphicScene = Hilo.Class.create({
       Extends: Hilo.Container,
@@ -12,7 +9,7 @@ class HiloEngine extends Engine {
         GraphicScene.superclass.constructor.call(this, properties);
         this.init(properties);
       },
-      init: function (_properties) {
+      init: (_properties) => {
         return;
       },
       onUpdate: function (_properties) {

@@ -2,9 +2,6 @@ import Two from 'two.js';
 import Engine from './engine.js';
 
 class TwoEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     super.init();
 
@@ -19,7 +16,7 @@ class TwoEngine extends Engine {
       this.two.clear();
     }
     this.two = new Two({
-      type: Two.Types['webgl'],
+      type: Two.Types.webgl,
       width: this.width,
       height: this.height,
       autostart: true,

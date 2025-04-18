@@ -5,7 +5,7 @@ const getCount = (search) =>
     .substring(1)
     .split('&')
     .filter((s) => s.startsWith('count='))
-    .map((s) => parseInt(s.split('=')[1]))[0];
+    .map((s) => Number.parseInt(s.split('=')[1]))[0];
 
 const getType = (search) =>
   search
@@ -46,10 +46,10 @@ class Engine {
 
   initCountLink() {
     const toggleCountLinks = (count) => {
-      this.countLinks.forEach((link) => {
+      for (const link of this.countLinks) {
         link.classList.toggle('active', false);
-      });
-      const link = [...this.countLinks].filter((l) => l.innerText == count)[0];
+      }
+      const link = [...this.countLinks].filter((l) => l.innerText === count)[0];
       if (link) {
         link.classList.toggle('active', true);
         this.count = count;
@@ -67,7 +67,7 @@ class Engine {
       link.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
-        const count = parseInt(link.innerText);
+        const count = Number.parseInt(link.innerText);
         const type = getType(search) || this.type;
         if (count) {
           if (type)
@@ -87,12 +87,10 @@ class Engine {
 
   initTypeLink() {
     const toggleTypeLinks = (type) => {
-      this.typeLinks.forEach((link) => {
+      for (const link of this.typeLinks) {
         link.classList.toggle('active', false);
-      });
-      const link = [...this.typeLinks].filter(
-        (l) => l.innerText.toLowerCase() == type
-      )[0];
+      }
+      const link = [...this.typeLinks].filter((l) => l.innerText.toLowerCase() === type)[0];
       if (link) {
         link.classList.toggle('active', true);
         this.type = type;
@@ -134,7 +132,7 @@ class Engine {
     const navLinks = document.querySelectorAll('header > nav > a');
     const { search, pathname } = window.location;
 
-    [...navLinks].forEach((ml) => {
+    for (const ml of [...navLinks]) {
       if (ml.pathname === pathname) ml.classList.add('active');
       ml.addEventListener('click', (event) => {
         event.preventDefault();
@@ -145,7 +143,7 @@ class Engine {
         if (type) href += `${count ? '&' : '?'}type=${type}`;
         window.location.href = href;
       });
-    });
+    }
   }
 
   init() {
@@ -153,7 +151,7 @@ class Engine {
     this.initNavLink();
   }
 
-  render() {}
+  render() { }
 }
 
 export default Engine;

@@ -1,9 +1,6 @@
 import Engine from './engine.js';
 
 class DOMEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     super.init();
 
@@ -32,11 +29,11 @@ class DOMEngine extends Engine {
         particle = document.createElement('div');
         if (this.type === 'stroke') particle.className = 'particle';
         else if (this.type === 'fill') particle.className = 'particle fill';
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
       }
-      particle.style.left = x + 'px';
-      particle.style.top = y + 'px';
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
       this.canvas.appendChild(particle);
       particles[i] = { x, y, size: size, dx, dy, el: particle };
     }
@@ -53,8 +50,8 @@ class DOMEngine extends Engine {
       else if (r.y + r.size < 0) r.dy *= -1;
       if (r.x > this.width) r.dx *= -1;
       else if (r.y > this.height) r.dy *= -1;
-      r.el.style.left = r.x + 'px';
-      r.el.style.top = r.y + 'px';
+      r.el.style.left = `${r.x}px`;
+      r.el.style.top = `${r.y}px`;
     }
 
     this.fpsmeter.tick();
