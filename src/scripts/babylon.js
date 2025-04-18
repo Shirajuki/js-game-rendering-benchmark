@@ -73,17 +73,17 @@ class BabylonEngine extends Engine {
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
 
-      let circle;
+      let particle;
       let filled;
       if (this.type === 'sprite') {
-        circle = new BABYLON.Sprite('sprite', spriteManager);
-        circle.width = 64;
-        circle.height = 64;
-        circle.angle = Math.PI;
-        circle.invertU = true;
-        circle.position.x = -x;
-        circle.position.z = -y;
-        circle.position.y = -i;
+        particle = new BABYLON.Sprite('sprite', spriteManager);
+        particle.width = 64;
+        particle.height = 64;
+        particle.angle = Math.PI;
+        particle.invertU = true;
+        particle.position.x = -x;
+        particle.position.z = -y;
+        particle.position.y = -i;
       } else {
         // Create circles by drawing lines in a 360 degree radius
         let points = [];
@@ -98,15 +98,15 @@ class BabylonEngine extends Engine {
           }
           circles[size] = points;
         }
-        circle = BABYLON.MeshBuilder.CreateLines(
+        particle = BABYLON.MeshBuilder.CreateLines(
           'circle',
           { points: points, updatable: false },
           this.scene
         );
-        circle.color = new BABYLON.Color3.White();
-        circle.position.x = -x;
-        circle.position.z = -y;
-        circle.position.y = -i - 1;
+        particle.color = new BABYLON.Color3.White();
+        particle.position.x = -x;
+        particle.position.z = -y;
+        particle.position.y = -i - 1;
         if (this.type === 'fill') {
           const mat = new BABYLON.StandardMaterial('mat1', this.scene);
           mat.alpha = 1;
@@ -126,11 +126,11 @@ class BabylonEngine extends Engine {
           filled.position.x = -x;
           filled.position.z = -y;
           filled.position.y = -i;
-          circle.color = new BABYLON.Color3.Black();
+          particle.color = new BABYLON.Color3.Black();
         }
       }
 
-      particles[i] = { x, y, size: size, dx, dy, el: [circle, filled] };
+      particles[i] = { x, y, size: size, dx, dy, el: [particle, filled] };
     }
     this.particles = particles;
   }

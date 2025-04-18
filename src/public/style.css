@@ -132,8 +132,8 @@ main>div {
 }
 
 .container a.active {
-  border-color: #fff;
-  border-bottom-color: #fff;
+  border-color: #fff !important;
+  border-bottom-color: #fff !important;
 }
 
 .count-container a:last-of-type {

@@ -49,7 +49,7 @@ class Engine {
       for (const link of this.countLinks) {
         link.classList.toggle('active', false);
       }
-      const link = [...this.countLinks].filter((l) => l.innerText === count)[0];
+      const link = [...this.countLinks].filter((l) => Number.parseInt(l.innerText) === count)[0];
       if (link) {
         link.classList.toggle('active', true);
         this.count = count;

@@ -578,6 +578,11 @@ kaboom@^2000.2.10:
   resolved "https://registry.yarnpkg.com/kaboom/-/kaboom-2000.2.10.tgz#b8b6efa3f0e2d104e81dae5f3900f8f25d34a504"
   integrity sha512-OHWdRuRMNkTkpO0/1R4ljS4+vpPtf6PvN+S0WTe+PkPB6Z61rmunw4SKTQDkrCt7dDzEIZTnK1G6s7rttd61Bw==
 
+kaplay@^3001.0.12:
+  version "3001.0.12"
+  resolved "https://registry.yarnpkg.com/kaplay/-/kaplay-3001.0.12.tgz#ba1176b03ffbbc85301100af0815f3b7a81c94a6"
+  integrity sha512-J4QOmQQRgSGg2qkiTwBTYdxGASlXGygIAZQhYIE2I5il5njOoFC7e1OTA5hEQZLjHajc/+lNhKYS8MLY4lgmyg==
+
 kontra@^8.0.0:
   version "8.0.0"
   resolved "https://registry.npmjs.org/kontra/-/kontra-8.0.0.tgz"
