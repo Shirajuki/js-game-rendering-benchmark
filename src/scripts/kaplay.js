@@ -1,26 +1,23 @@
-import Two from 'two.js';
+import kaplay from 'kaplay';
 import Engine from './engine.js';
 
-class TwoEngine extends Engine {
+class KaplayEngine extends Engine {
   init() {
     super.init();
+
+    const k = kaplay({
+      background: [26, 26, 26],
+      global: false,
+      canvas: this.canvas,
+      width: this.width,
+      height: this.height,
+    });
+    k.loadSprite('sprite', 'sprite.png');
+    this.k = k;
 
     // Clear the canvas
     this.canvas.innerHTML = '';
     window.cancelAnimationFrame(this.request);
-
-    const main = document.querySelector('main');
-    main.removeChild(main.lastElementChild);
-    if (this.two) {
-      this.two.unbind('update');
-      this.two.clear();
-    }
-    this.two = new Two({
-      type: Two.Types.webgl,
-      width: this.width,
-      height: this.height,
-      autostart: true,
-    }).appendTo(main);
 
     // Particle creation
     const particles = new Array(this.count);
@@ -35,20 +32,26 @@ class TwoEngine extends Engine {
       ];
       let particle;
       if (this.type === 'sprite') {
-        particle = new Two.Sprite('sprite.png', x, y, 1, 1);
-        this.two.add(particle);
+        particle = k.add([k.sprite('sprite'), k.pos(x, y)]);
       } else {
-        particle = this.two.makeCircle(0, 0, size);
-        if (this.type === 'stroke') particle.noFill().stroke = '#ffffff';
-        else if (this.type === 'fill') particle.stroke = '#000000';
+        particle = k.add([
+          k.pos(x, y),
+          k.circle(size),
+          k.opacity(this.type === 'stroke' ? 0 : 1),
+          k.outline(
+            1,
+            this.type === 'stroke' ? k.rgb(255, 255, 255) : k.rgb(0, 0, 0)
+          ),
+        ]);
       }
-      particle.position.set(0, 0);
+
       particles[i] = { x, y, size: size, dx, dy, el: particle };
     }
     this.particles = particles;
   }
   render() {
-    this.two.bind('update', () => {
+    const k = this.k;
+    k.onUpdate(() => {
       // Particle animation
       const particles = this.particles;
       for (let i = 0; i < this.count; i++) {
@@ -59,7 +62,8 @@ class TwoEngine extends Engine {
         else if (r.y + r.size < 0) r.dy *= -1;
         if (r.x > this.width) r.dx *= -1;
         else if (r.y > this.height) r.dy *= -1;
-        r.el.translation.set(r.x, r.y);
+        r.el.pos.x = r.x;
+        r.el.pos.y = r.y;
       }
       this.fpsmeter.tick();
     });
@@ -67,6 +71,6 @@ class TwoEngine extends Engine {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const engine = new TwoEngine();
+  const engine = new KaplayEngine();
   engine.render();
 });

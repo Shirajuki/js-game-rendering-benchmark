@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -16,6 +17,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
 a {
   font-weight: 500;
   color: #9c64ff;
@@ -23,34 +25,42 @@ a {
   border-bottom: 1px solid #9c64ff;
   transition: color 0.2s, filter 0.2s, border-color 0.2s;
 }
+
 a:hover {
   color: #934ddd;
 }
 
+html {
+  zoom: 0.9;
+}
+
 body {
   margin: 0;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   font-size: 18px;
 }
+
 header {
-  padding: 1rem 2rem 0 2rem;
-  height: 90px;
+  padding: 2rem;
+  min-height: 90px;
   font-size: 26px;
 }
+
 nav {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
+
 main {
   padding: 0 2rem;
   max-width: 100vw;
   overflow-x: hidden;
-  min-height: calc(100vh - 90px - 90px);
 }
+
 footer {
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -58,49 +68,58 @@ footer {
   bottom: 0;
   width: 100%;
   height: 90px;
-  padding: 1rem 2rem;
+  padding: 2rem;
 }
+
 footer .name {
   font-size: 26px;
 }
+
 footer span {
   font-size: 14px;
   margin-left: 0.75rem;
   opacity: 0.7;
 }
 
-main > div {
+main>div {
   display: grid;
   grid-template-columns: 1fr 140px;
   min-height: 60px;
   align-items: center;
   width: 1024px;
 }
+
 .container {
   position: relative;
   margin-top: 0.2rem;
   margin-bottom: 0.8rem;
 }
+
 .fps-container {
   position: relative;
   transform: translate(4px, 13px);
 }
-.fps-container > div {
+
+.fps-container>div {
   height: 40px !important;
   border-radius: 6px;
 }
+
 .container span {
   font-size: 0.9rem;
 }
-.count-container > div {
+
+.count-container>div {
   margin-top: 0.1rem;
 }
+
 .count-container a:last-of-type:not(.active) {
   pointer-events: none;
   opacity: 0.7;
   border-bottom: 1px solid transparent;
   filter: grayscale(1);
 }
+
 .container a {
   position: relative;
   display: inline-block;
@@ -115,13 +134,16 @@ main > div {
   border-color: #9c64ff;
   transition: border-color 0.2s, color 0.2s;
 }
+
 .container a.active {
-  border-color: #fff;
-  border-bottom-color: #fff;
+  border-color: #fff !important;
+  border-bottom-color: #fff !important;
 }
+
 .count-container a:last-of-type {
   border-color: transparent;
 }
+
 .container a::before {
   content: '';
   position: absolute;
@@ -137,6 +159,7 @@ main > div {
   color: white;
   pointer-events: none;
 }
+
 a.active {
   border-bottom: 1px solid transparent;
 }
@@ -146,10 +169,12 @@ a.active {
   border: 1px solid white;
   border-radius: 50%;
 }
+
 .particle.fill {
   background-color: white;
   border: 1px solid black;
 }
+
 .particle.sprite {
   border: initial;
   border-radius: initial;
@@ -179,9 +204,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #9c64ff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

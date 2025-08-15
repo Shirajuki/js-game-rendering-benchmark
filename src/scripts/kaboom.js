@@ -2,9 +2,6 @@ import kaboom from 'kaboom';
 import Engine from './engine.js';
 
 class KaboomEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     super.init();
 
@@ -33,11 +30,11 @@ class KaboomEngine extends Engine {
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
-      let circle;
+      let particle;
       if (this.type === 'sprite') {
-        circle = k.add([k.sprite('sprite'), k.pos(x, y)]);
+        particle = k.add([k.sprite('sprite'), k.pos(x, y)]);
       } else {
-        circle = k.add([
+        particle = k.add([
           k.pos(x, y),
           k.circle(size),
           k.opacity(this.type === 'stroke' ? 0 : 1),
@@ -48,7 +45,7 @@ class KaboomEngine extends Engine {
         ]);
       }
 
-      particles[i] = { x, y, size: size, dx, dy, el: circle };
+      particles[i] = { x, y, size: size, dx, dy, el: particle };
     }
     this.particles = particles;
   }

@@ -2,9 +2,6 @@ import * as THREE from 'three';
 import Engine from './engine.js';
 
 class ThreeEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     super.init();
 
@@ -64,7 +61,8 @@ class ThreeEngine extends Engine {
       ];
 
       const geometry = new THREE.CircleGeometry(size);
-      let line, plane;
+      let line;
+      let plane;
       if (this.type === 'sprite') {
         line = new THREE.Sprite(material);
         line.scale.x = 64;

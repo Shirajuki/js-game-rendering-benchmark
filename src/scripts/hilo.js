@@ -2,9 +2,6 @@ import Hilo from 'hilojs';
 import Engine from './engine.js';
 
 class HiloEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     const GraphicScene = Hilo.Class.create({
       Extends: Hilo.Container,
@@ -12,7 +9,7 @@ class HiloEngine extends Engine {
         GraphicScene.superclass.constructor.call(this, properties);
         this.init(properties);
       },
-      init: function (_properties) {
+      init: (_properties) => {
         return;
       },
       onUpdate: function (_properties) {
@@ -73,27 +70,27 @@ class HiloEngine extends Engine {
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
-      let circle;
+      let particle;
       if (this.type === 'sprite') {
-        circle = new Hilo.Bitmap({
+        particle = new Hilo.Bitmap({
           image: 'sprite.png',
         }).addTo(this.graphicScene);
       } else {
-        circle = new Hilo.Graphics({
+        particle = new Hilo.Graphics({
           width: size * 2,
           height: size * 2,
           x: x,
           y: y,
         });
         if (this.type === 'stroke')
-          circle
+          particle
             .lineStyle(1, '#ffffff')
             .drawCircle(1, 1, size - 1)
             .closePath()
             .endFill()
             .addTo(this.graphicScene);
         else if (this.type === 'fill')
-          circle
+          particle
             .beginFill('#fff')
             .lineStyle(1, '#000000')
             .drawCircle(1, 1, size - 1)
@@ -101,7 +98,7 @@ class HiloEngine extends Engine {
             .endFill()
             .addTo(this.graphicScene);
       }
-      particles[i] = { x, y, size: size, dx, dy, el: circle };
+      particles[i] = { x, y, size: size, dx, dy, el: particle };
     }
     this.particles = particles;
   }

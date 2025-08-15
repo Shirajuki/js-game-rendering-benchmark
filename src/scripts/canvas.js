@@ -1,9 +1,6 @@
 import Engine from './engine.js';
 
 class CanvasEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     super.init();
 
@@ -59,7 +56,7 @@ class CanvasEngine extends Engine {
         this.ctx.beginPath();
         this.ctx.arc(r.x, r.y, r.size, 0, 2 * Math.PI);
         if (this.type === 'fill') this.ctx.fill();
-        if (this.type != 'sprite') this.ctx.stroke();
+        if (this.type !== 'sprite') this.ctx.stroke();
       }
     }
 

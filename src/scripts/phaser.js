@@ -46,9 +46,6 @@ const scene = (engine) => {
 };
 
 class CanvasEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     super.init();
 
