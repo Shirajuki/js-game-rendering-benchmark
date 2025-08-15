@@ -1,12 +1,7 @@
 import Engine from './engine.js';
 import litecanvas from 'litecanvas';
 
-function init() {}
-
 class LitecanvasEngine extends Engine {
-  constructor() {
-    super();
-  }
   init() {
     super.init();
 
@@ -69,8 +64,11 @@ class LitecanvasEngine extends Engine {
           this.engine.image(r.x, r.y, this.sprite);
         }
       } else {
-        if (this.type === 'fill') this.engine.circfill(r.x, r.y, r.size, 3);
-        if (this.type != 'sprite') this.engine.circ(r.x, r.y, r.size, 1);
+        if (this.type === 'fill') {
+          this.engine.circfill(r.x, r.y, r.size, 3);
+          this.engine.stroke(0);
+        }
+        if (this.type != 'sprite') this.engine.circ(r.x, r.y, r.size, 3);
       }
     }
 

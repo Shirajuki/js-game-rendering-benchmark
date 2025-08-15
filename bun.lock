@@ -11,6 +11,7 @@
         "kaboom": "^2000.2.10",
         "kaplay": "^3001.0.19",
         "kontra": "^10.0.2",
+        "litecanvas": "^0.66.4",
         "melonjs": "^17.4.0",
         "phaser": "^3.90.0",
         "pixi.js": "^7.4.3",
@@ -255,6 +256,8 @@
     "kaplay": ["kaplay@3001.0.19", "", {}, "sha512-T8GdXGXvgv/vbYVA1lcHzuDNVhp3juOJJE8OZs0vR5MdGNElBvANEeTSnqAAhJpSXtNxpeNy29pqkok3RnXKtg=="],
 
     "kontra": ["kontra@10.0.2", "", {}, "sha512-NJfxmWtwDi1rWjj/fhOVwW4txjEVsDNgNNHNzc87YnsN7qZlZlkLQ0mWt7SN6WEAMH2KmX4evgL3Cmc2zVOXvQ=="],
+
+    "litecanvas": ["litecanvas@0.66.4", "", {}, "sha512-rf61a+zwG53Vcs4hePEJZQrWK+/8ZqqVDlCM3RV+rUkGoU8PXaUWVUZqI+dfZx9vFB5Ajnu7GMV5umdHEcO97Q=="],
 
     "math-intrinsics": ["math-intrinsics@1.1.0", "", {}, "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g=="],
 
