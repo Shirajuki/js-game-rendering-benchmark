@@ -18,7 +18,7 @@ jobs:
 
       - name: Build
         run: |
-          bun build
+          bun run build
           echo > ./dist/.nojekyll
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
