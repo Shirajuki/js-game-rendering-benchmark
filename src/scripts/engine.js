@@ -49,7 +49,9 @@ class Engine {
       for (const link of this.countLinks) {
         link.classList.toggle('active', false);
       }
-      const link = [...this.countLinks].filter((l) => Number.parseInt(l.innerText) === count)[0];
+      const link = [...this.countLinks].filter(
+        (l) => Number.parseInt(l.innerText) === count
+      )[0];
       if (link) {
         link.classList.toggle('active', true);
         this.count = count;
@@ -80,6 +82,7 @@ class Engine {
           toggleCountLinks(count);
           this.init();
           this.render();
+          window.location.href = window.location.href;
         }
       });
     });
@@ -90,7 +93,9 @@ class Engine {
       for (const link of this.typeLinks) {
         link.classList.toggle('active', false);
       }
-      const link = [...this.typeLinks].filter((l) => l.innerText.toLowerCase() === type)[0];
+      const link = [...this.typeLinks].filter(
+        (l) => l.innerText.toLowerCase() === type
+      )[0];
       if (link) {
         link.classList.toggle('active', true);
         this.type = type;
@@ -123,6 +128,7 @@ class Engine {
           toggleTypeLinks(type);
           this.init();
           this.render();
+          window.location.href = window.location.href;
         }
       });
     });
@@ -151,7 +157,7 @@ class Engine {
     this.initNavLink();
   }
 
-  render() { }
+  render() {}
 }
 
 export default Engine;
