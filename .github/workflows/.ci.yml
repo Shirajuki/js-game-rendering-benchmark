@@ -18,7 +18,7 @@ jobs:
 
       - name: Build
         run: |
-          bun run install
+          bun install
           bun run build
           echo > ./dist/.nojekyll
         env:
