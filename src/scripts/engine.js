@@ -20,10 +20,12 @@ class Engine {
     this.fpsContainer = document.querySelector('.fps-container');
     this.countLinks = document.querySelectorAll('.count-container a');
     this.typeLinks = document.querySelectorAll('.options-container a');
-    canvas.width = 1024;
-    canvas.height = 480;
-    this.width = this.canvas.width;
-    this.height = this.canvas.height;
+    this.width = 1024;
+    this.height = 480;
+    if (this.canvas) {
+      this.canvas.width = this.width;
+      this.canvas.height = this.height;
+    }
     this.count = 0;
 
     this.initCountLink();

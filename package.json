@@ -22,6 +22,7 @@
     "kaplay": "^3001.0.19",
     "kontra": "^10.0.2",
     "litecanvas": "0.99.0",
+    "littlejsengine": "^1.11.10",
     "melonjs": "^17.4.0",
     "phaser": "^3.90.0",
     "pixi.js": "^8.12.0",

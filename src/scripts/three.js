@@ -18,7 +18,7 @@ class ThreeEngine extends Engine {
     );
     this.camera.position.set(this.width / 2, this.height / 2, 500);
     this.renderer = new THREE.WebGLRenderer({
-      antialias: true,
+      antialias: false,
       depth: false,
       precision: 'lowp',
     });
@@ -48,7 +48,12 @@ class ThreeEngine extends Engine {
       lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 });
 
     // Sprite texture
-    const map = new THREE.TextureLoader().load('sprite.png');
+    const map = new THREE.TextureLoader().load('sprite.png', (texture) => {
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.minFilter = THREE.NearestFilter;
+      texture.magFilter = THREE.NearestFilter;
+      texture.generateMipmaps = false;
+    });
     const material = new THREE.SpriteMaterial({ map: map });
 
     for (let i = 0; i < this.count; i++) {
