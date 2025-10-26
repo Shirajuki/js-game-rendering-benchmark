@@ -1,6 +1,10 @@
 import * as ex from 'excalibur';
 import Engine from './engine.js';
 
+const spriteImage = new ex.ImageSource('sprite.png');
+
+const loader = new ex.Loader([spriteImage]);
+
 export class Scene extends ex.Scene {
   particles = [];
   onActivate(ctx) {
@@ -83,12 +87,12 @@ class ExcaliburEngine extends Engine {
     window.cancelAnimationFrame(this.request);
     if (this.game) {
       this.game.dispose();
-      this.canvas = document.createElement("canvas");
-      this.canvas.id = "canvas";
-      this.canvas.className = "canvas";
+      this.canvas = document.createElement('canvas');
+      this.canvas.id = 'canvas';
+      this.canvas.className = 'canvas';
       this.canvas.width = this.width;
       this.canvas.height = this.height;
-      document.querySelector("main").appendChild(this.canvas);
+      document.querySelector('main').appendChild(this.canvas);
     }
 
     const game = new ex.Engine({
@@ -97,12 +101,13 @@ class ExcaliburEngine extends Engine {
       canvasElement: this.canvas,
       physics: false, // this benchmark is only doing drawing
       backgroundColor: ex.Color.fromRGB(26, 26, 26),
-      scenes: { scene: Scene }
+      suppressPlayButton: true,
+      scenes: { scene: Scene },
     });
     this.game = game;
   }
   render() {
-    this.game.start().then(() => {
+    this.game.start(loader).then(() => {
       this.game.goToScene('scene', { sceneActivationData: { engine: this } });
     });
   }
