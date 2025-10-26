@@ -6,81 +6,77 @@ const spriteImage = new ex.ImageSource('sprite.png');
 const loader = new ex.Loader([spriteImage]);
 
 export class Scene extends ex.Scene {
-  onInitialize() {
-    this.sprite = spriteImage.toSprite();
-  }
-
+  particles = [];
   onActivate(ctx) {
-    this.engine = ctx.data.engine;
+    this.benchmarkEngine = ctx.data.engine;
 
     this.clear();
 
     // Particle creation
-    const particles = Array.from({ length: this.engine.count });
+    this.particles = new Array(this.benchmarkEngine.count);
     const rnd = [1, -1];
+    const spriteImage = new ex.ImageSource('sprite.png');
+    spriteImage.load();
+    const sprite = ex.Sprite.from(spriteImage);
 
-    const graphicsGroup = new ex.GraphicsGroup({ members: [] });
+    const random = new ex.Random();
+    let randomCircles = [];
 
-    for (let i = 0; i < this.engine.count; i++) {
+    for (let i = 0; i < 80; i++) {
       const size = 10 + Math.random() * 80;
-      const x = Math.random() * this.engine.width;
-      const y = Math.random() * (this.engine.height - size);
+      const x = Math.random() * this.benchmarkEngine.width;
+      const y = Math.random() * (this.benchmarkEngine.height - size);
+
+      const circle = new ex.Circle({
+        x: x,
+        y: y,
+        radius: size,
+        color:
+          this.benchmarkEngine.type === 'stroke'
+            ? ex.Color.Transparent
+            : ex.Color.fromRGB(255, 255, 255),
+        strokeColor:
+          this.benchmarkEngine.type === 'stroke'
+            ? ex.Color.fromRGB(255, 255, 255)
+            : ex.Color.fromRGB(0, 0, 0),
+        strokeWidth: this.benchmarkEngine.type === 'stroke' ? 1 : undefined,
+      });
+      randomCircles.push(circle);
+    }
+    for (let i = 0; i < this.benchmarkEngine.count; i++) {
+      const size = 10 + Math.random() * 80;
+      const x = Math.random() * this.benchmarkEngine.width;
+      const y = Math.random() * (this.benchmarkEngine.height - size);
       const [dx, dy] = [
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
         3 * Math.random() * rnd[Math.floor(Math.random() * 2)],
       ];
 
-      if (this.engine.type === 'sprite') {
-        graphicsGroup.members.push({
-          graphic: this.sprite,
-          offset: ex.vec(x, y),
-        });
+      this.particles[i] = { x, y, size: size, dx, dy, graphics: null };
+      if (this.benchmarkEngine.type === 'sprite') {
+        this.particles[i].graphics = sprite;
       } else {
-        const circle = new ex.Circle({
-          x: x,
-          y: y,
-          radius: size,
-          color:
-            this.engine.type === 'stroke'
-              ? ex.Color.Transparent
-              : ex.Color.fromRGB(255, 255, 255),
-          strokeColor:
-            this.engine.type === 'stroke'
-              ? ex.Color.fromRGB(255, 255, 255)
-              : ex.Color.fromRGB(0, 0, 0),
-          strokeWidth: this.engine.type === 'stroke' ? 1 : undefined,
-        });
-        graphicsGroup.members.push({
-          graphic: circle,
-          offset: ex.vec(x, y),
-        });
+        this.particles[i].graphics = random.pickOne(randomCircles);
       }
-
-      particles[i] = { x, y, size: size, dx, dy, el: graphicsGroup.members[i] };
     }
-
-    const screenElement = new ex.ScreenElement();
-
-    screenElement.graphics.use(graphicsGroup);
-
-    this.add(screenElement);
-
-    this.particles = particles;
   }
-
-  onPostUpdate(engine) {
-    for (let i = 0; i < this.engine.count; i++) {
+  onPostUpdate() {
+    for (let i = 0; i < this.benchmarkEngine.count; i++) {
       const r = this.particles[i];
       r.x -= r.dx;
       r.y -= r.dy;
       if (r.x + r.size < 0) r.dx *= -1;
       else if (r.y + r.size < 0) r.dy *= -1;
-      if (r.x > engine.screen.drawWidth) r.dx *= -1;
-      else if (r.y > engine.screen.drawHeight) r.dy *= -1;
-      r.el.offset.setTo(r.x, r.y);
+      if (r.x > this.engine.screen.drawWidth) r.dx *= -1;
+      else if (r.y > this.engine.screen.drawHeight) r.dy *= -1;
     }
-
-    this.engine.fpsmeter.tick();
+    this.benchmarkEngine.fpsmeter.tick();
+  }
+  onPostDraw(ctx) {
+    for (let i = 0; i < this.benchmarkEngine.count; i++) {
+      const particle = this.particles[i];
+      particle.graphics.draw(ctx, particle.x, particle.y);
+    }
   }
 }
 
@@ -103,9 +99,9 @@ class ExcaliburEngine extends Engine {
       width: this.width,
       height: this.height,
       canvasElement: this.canvas,
+      physics: false, // this benchmark is only doing drawing
       backgroundColor: ex.Color.fromRGB(26, 26, 26),
       suppressPlayButton: true,
-      physics: { enabled: false },
       scenes: { scene: Scene },
     });
     this.game = game;

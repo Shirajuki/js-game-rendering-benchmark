@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "babylonjs": "^8.23.1",
-    "excalibur": "^0.30.3",
+    "excalibur": "0.31.0",
     "fpsmeter": "^0.3.1",
     "hilojs": "^2.0.2",
     "kaboom": "^2000.2.10",
